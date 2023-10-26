@@ -1,5 +1,10 @@
 Shared.MaxFrequency = 500.00 -- Max Limit of Radio Channel
 
+Shared.JobUsingCallsign = { 
+    ["police"] = true, 
+    ["ambulance"] = true, 
+}
+
 Shared.RestrictedChannels = {
     [1] = { -- channel id
         type = 'job', -- job/gang

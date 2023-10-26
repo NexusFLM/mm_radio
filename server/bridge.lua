@@ -29,7 +29,17 @@ function GetUserName(source)
     elseif Shared.Core == "esx" and ESX then
         local xPlayer = ESX.GetPlayerFromId(source)
         if xPlayer then
-            return xPlayer.getName()
+            if Shared.JobUsingCallsign[xPlayer.job.name] == true then
+                return FormattedEsxCallsign(Player(xPlayer.source).state.callsign, xPlayer.job.grade_label)
+            else
+                return xPlayer.getName()
+            end
+            
         end
     end
+end
+
+
+function FormattedEsxCallsign(callsign, gradeLabel)
+    return string.format("[%d] %s", callsign, gradeLabel)
 end
