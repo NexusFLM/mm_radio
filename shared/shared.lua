@@ -1,5 +1,7 @@
 Shared.MaxFrequency = 500.00 -- Max Limit of Radio Channel
 
+Shared.RadioItem = "radio"
+
 Shared.JobUsingCallsign = { 
     ["police"] = true, 
     ["ambulance"] = true, 

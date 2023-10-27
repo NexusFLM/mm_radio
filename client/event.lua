@@ -25,23 +25,31 @@ AddEventHandler('onResourceStop', function(resource)
 end)
 
 RegisterNetEvent('mm_radio:client:use', function()
-    Radio.usingRadio = true
-    SetNuiFocus(true, true)
-    Radio:toggleRadioAnimation(true)
-    Radio:SendSvelteMessage("setRadioVisible", {
-        onRadio = Radio.onRadio,
-        channel = Radio.RadioChannel,
-        volume = Radio.Volume,
-        favourite = Radio.favourite,
-        recomended = Radio.recomended,
-        userData = Radio.userData,
-        time = Radio:CalculateTimeToDisplay(),
-        street = Radio:getCrossroads(),
-        maxChannel = Shared.MaxFrequency,
-        locale = Radio.locale.ui
-    })
-
-    updateTime()
+    if CanPlayerOpenRadio() then
+        Radio.usingRadio = true
+        SetNuiFocus(true, true)
+        Radio:toggleRadioAnimation(true)
+        Radio:SendSvelteMessage("setRadioVisible", {
+            onRadio = Radio.onRadio,
+            channel = Radio.RadioChannel,
+            volume = Radio.Volume,
+            favourite = Radio.favourite,
+            recomended = Radio.recomended,
+            userData = Radio.userData,
+            time = Radio:CalculateTimeToDisplay(),
+            street = Radio:getCrossroads(),
+            maxChannel = Shared.MaxFrequency,
+            locale = Radio.locale.ui
+        })
+    
+        updateTime()
+    else
+        lib.notify({
+            title = 'Aucunes radios trouvées',
+            description = "Veuillez vous équiper d'une radio",
+            type = 'error'
+        })
+    end
 end)
 
 RegisterNetEvent('mm_radio:client:remove', function()

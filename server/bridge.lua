@@ -7,7 +7,7 @@ if Shared.Core == "qb" then
 
     if not Shared.Ready then return end
 
-    QBCore.Functions.CreateUseableItem("radio", function(source)
+    QBCore.Functions.CreateUseableItem(Shared.RadioItem, function(source)
         TriggerClientEvent('mm_radio:client:use', source)
     end)
 elseif Shared.Core == "esx" then
@@ -15,7 +15,7 @@ elseif Shared.Core == "esx" then
 
     if not Shared.Ready then return end
 
-    ESX.RegisterUsableItem('radio', function(source)
+    ESX.RegisterUsableItem(Shared.RadioItem, function(source)
         TriggerClientEvent('mm_radio:client:use', source)
     end)
 end
@@ -41,5 +41,6 @@ end
 
 
 function FormattedEsxCallsign(callsign, gradeLabel)
+    if not callsign then callsign = 000 end
     return string.format("[%d] %s", callsign, gradeLabel)
 end

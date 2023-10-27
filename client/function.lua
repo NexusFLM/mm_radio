@@ -168,3 +168,12 @@ lib.addKeybind({
         end
     end
 })
+
+function CanPlayerOpenRadio()
+    local count = exports.ox_inventory:Search('count', Shared.RadioItem)
+    if count > 0 then
+        return true
+    else
+        return false
+    end
+end
