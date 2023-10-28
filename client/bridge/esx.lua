@@ -12,7 +12,7 @@ if Shared.Core == "esx" then
 
     function Radio:ESXInit()
         Radio.PlayerJob = ESX.PlayerData.job.name
-        Radio.PlayerGang = ESX.PlayerData.job.name
+        Radio.PlayerGang = ESX.PlayerData.faction.name
         Radio.PlayerDuty = true
 
         local rec = {}
