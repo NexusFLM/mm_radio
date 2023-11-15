@@ -36,6 +36,8 @@ function GetUserName(source)
             end
             
         end
+    else
+        return GetPlayerName(source)
     end
 end
 
